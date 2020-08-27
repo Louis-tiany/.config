@@ -81,12 +81,12 @@ nnoremap Y y$
 nnoremap <F2> :g/^\s*$/d<CR>
 "拷贝到系统剪贴板
 vnoremap Y "+y
+
 "open terminal
 noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 "remove space int the  end of line
 nnoremap <LEADER><LEADER>s :%s/\s\+$//<CR>
-
 
 
 "line visual mode 
@@ -138,6 +138,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'Yggdroot/indentLine'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+Plug 'ajmwagar/vim-deus'
 call plug#end()
 
 
@@ -207,6 +209,7 @@ let g:gitgutter_max_signs = 500  " default value"
 
 let g:SnazzyTransparent = 1
 colorscheme snazzy
+colorscheme deus
 
 
 "ale setting
@@ -226,6 +229,14 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+
+"for go
+let g:ale_linters = {
+    \ 'go': ['gopls'],
+    \}
+
+
+
 "sp to previous error
 "sn to next error
 nmap sp <Plug>(ale_previous_wrap)
@@ -490,4 +501,15 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 let g:indentLine_enabled = 1
+
+
+" golang setting
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+autocmd FileType go nmap <LEADER>b  <Plug>(go-build)
+autocmd FileType go nmap <LEADER>r  <Plug>(go-run)
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_doc_keywordprg_enabled = 0
 
