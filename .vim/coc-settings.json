@@ -1,4 +1,7 @@
 {
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "suggest.noselect": true,
+    "suggest.enablePreselect": false,
     "python.jediEnabled": false,
     "python.condaPath": "~/anaconda3",
     "python.analysis.diagnosticEnabled": false,
