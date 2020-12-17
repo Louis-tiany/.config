@@ -140,6 +140,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'Yggdroot/indentLine'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 Plug 'ajmwagar/vim-deus'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/gcmt/wildfire.vim'   
 call plug#end()
 
 
@@ -209,7 +211,6 @@ let g:gitgutter_max_signs = 500  " default value"
 
 let g:SnazzyTransparent = 1
 colorscheme snazzy
-colorscheme deus
 
 
 "ale setting
@@ -282,7 +283,7 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
 set updatetime=300
 
 let g:coc_global_extensions = ['coc-tsserver','coc-html','coc-css', 'coc-json',
-            \ 'coc-java','coc-python','coc-flutter',
+            \ 'coc-java','coc-python','coc-flutter', 'coc-cmake', 'coc-explorer',
             \ 'coc-emmet','coc-snippets','coc-xml','coc-yaml',
             \ 'coc-markdownlint','coc-highlight','coc-clangd']
 
@@ -332,7 +333,7 @@ inoremap <silent><expr> <Tab>
 
 
 "open nerdtree
-map tt :NERDTreeToggle<CR>
+map tt :CocCommand explorer<CR>
 "nerdtree arrow style
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
